@@ -30,7 +30,7 @@ function buildSuggestions(searchValue) {
   return (dispatch, getState) => {
     const {
       projectNames
-    } = getState();
+    } = getState().spurs;
     const inputValue = searchValue.trim().toLowerCase();
     const inputLength = inputValue.length;
 
@@ -83,7 +83,7 @@ function _fetchProjectNames() {
 export function fetchAndBuildSuggestions(searchValue) {
   return (dispatch, getState) => {
     // only fetch project names once per lifetime of the app
-    if (getState().projectNames.length === 0) {
+    if (getState().spurs.projectNames.length === 0) {
       return dispatch(_fetchProjectNames()).then(() => {
         dispatch(buildSuggestions(searchValue));
       });
@@ -118,7 +118,7 @@ function receiveProjectDependencyInfo(projectName, dependencyInfo) {
 
 function _fetchProjectDependencyInfo(projectName) {
   return (dispatch, getState) => {
-    const projectDependencyInfoLocation = getState().projectIndex[projectName];
+    const projectDependencyInfoLocation = getState().spurs.projectIndex[projectName];
 
     return fetch(`dependency_info/${projectDependencyInfoLocation}`)
       .then(res => {
@@ -132,14 +132,22 @@ function _fetchProjectDependencyInfo(projectName) {
   }
 }
 
-export function selectProject(projectName) {
+function _selectProject(projectName) {
   return (dispatch, getState) => {
-    if (getState().projectDependencyInfoList.hasOwnProperty(projectName)) {
+    if (getState().spurs.projectDependencyInfoList.hasOwnProperty(projectName)) {
       return dispatch(setSelectedProject(projectName));
     }
 
     return dispatch(_fetchProjectDependencyInfo(projectName)).then(() => {
       dispatch(setSelectedProject(projectName));
+    });
+  };
+}
+
+export function navigateToProject(projectName) {
+  return (dispatch) => {
+    return dispatch(_fetchProjectNames()).then(() => {
+      return dispatch(_selectProject(projectName));
     });
   };
 }

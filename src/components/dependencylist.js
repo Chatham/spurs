@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const DependencyList = ({name, dependencies, onDependencyClick}) => (
   <div className="dependencylist">
     <p className="name">{name} ({dependencies.length})</p>
     <ul className="items">
       {dependencies.map(dependency => (
-        <li className="item" key={dependency}>{dependency}</li>
+        <li className="item" key={dependency}><Link to={`/?projectName=${dependency}`}>{dependency}</Link></li>
       ))}
     </ul>
   </div>

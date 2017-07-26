@@ -1,9 +1,11 @@
 import {connect} from 'react-redux';
-import {fetchAndBuildSuggestions, clearSuggestions, selectProject, searchValueChange} from '../actions';
+import PropTypes from 'prop-types';
+import {fetchAndBuildSuggestions, clearSuggestions, searchValueChange} from '../actions';
 import Search from '../components/search.js';
+import { push } from 'react-router-redux';
 
 const mapStateToProps = state => {
-  return {value: state.searchValue, suggestions: state.searchSuggestions}
+  return {value: state.spurs.searchValue, suggestions: state.spurs.searchSuggestions}
 };
 
 const mapDispatchToProps = dispatch => {
@@ -15,7 +17,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(clearSuggestions());
     },
     onSuggestionSelected: (event, {suggestionValue}) => {
-      dispatch(selectProject(suggestionValue));
+      dispatch(push(`/?projectName=${suggestionValue}`));
     },
     onChange: (event, {newValue}) => {
       dispatch(searchValueChange(newValue));

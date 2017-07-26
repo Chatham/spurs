@@ -3,10 +3,10 @@ import ProjectDependencyInfo from '../components/projectdependencyinfo.js';
 
 const mapStateToProps = state => {
   return {
-    name: state.selectedProject.projectName,
-    location: state.selectedProject.dependencyInfo.location,
-    dependencyOf: state.selectedProject.dependencyInfo.dependencyOf,
-    dependencies: state.selectedProject.dependencyInfo.dependencies,
+    name: state.spurs.selectedProject.projectName,
+    location: state.spurs.selectedProject.dependencyInfo.location,
+    dependencyOf: state.spurs.selectedProject.dependencyInfo.dependencyOf,
+    dependencies: state.spurs.selectedProject.dependencyInfo.dependencies,
   }
 };
 

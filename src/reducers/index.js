@@ -10,7 +10,7 @@ import {
   RECEIVE_PROJECT_DEPENDENCY_INFO
 } from '../actions';
 
-function reducer(state = {
+function spurs(state = {
   searchValue: "",
   searchSuggestions: [],
   projectNames: [],
@@ -51,10 +51,10 @@ function reducer(state = {
         projectName: selectedProjectName,
         dependencyInfo: selectedProjectDependencyInfo
       };
-      return { ...state, selectedProject };
+      return { ...state, selectedProject, searchValue: selectedProjectName };
     default:
       return state;
   }
 }
 
-export default reducer;
+export default spurs;

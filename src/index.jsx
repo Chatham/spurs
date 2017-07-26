@@ -12,17 +12,15 @@ let store = createStore(
   applyMiddleware(thunk)
 );
 
-render( <Provider store={store}><AppContainer><App/></AppContainer></Provider>, document.querySelector("#app"));
+render( <AppContainer><App/></AppContainer>, document.querySelector("#app"));
 
 if (module && module.hot) {
   module.hot.accept('./app.jsx', () => {
     const App = require('./app.jsx').default;
     render(
-      <Provider store={store}>
-        <AppContainer>
-          <App/>
-        </AppContainer>
-      </Provider>,
+      <AppContainer>
+        <App/>
+      </AppContainer>,
       document.querySelector("#app")
     );
   });

@@ -51,8 +51,19 @@ body {
 .projectdependencyinfo .location a:link,
 .projectdependencyinfo .location a:visited,
 .projectdependencyinfo .location a:hover,
-.projectdependencyinfo .location a:active {
+.projectdependencyinfo .location a:active,
+.projectdependencyinfo .dependencylist .items .item a:link,
+.projectdependencyinfo .dependencylist .items .item a:visited,
+.projectdependencyinfo .dependencylist .items .item a:hover,
+.projectdependencyinfo .dependencylist .items .item a:active {
   color: white;
+}
+
+.projectdependencyinfo .dependencylist .items .item a:link,
+.projectdependencyinfo .dependencylist .items .item a:visited,
+.projectdependencyinfo .dependencylist .items .item a:hover,
+.projectdependencyinfo .dependencylist .items .item a:active  {
+  text-decoration: none;
 }
 
 .dependencylist {
