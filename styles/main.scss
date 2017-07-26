@@ -1,7 +1,79 @@
+html {
+  /* To make use of full height of page*/
+  min-height: 100%;
+  margin: 0;
+}
+
 body {
-  width: 100vh;
-  height: 100vh;
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
   background: #005c97;
   background: -webkit-radial-gradient(circle at center, #005c97, #363795);
   background: radial-gradient(circle at center, #005C97, #363795);
+  background-attachment: fixed;
+}
+
+.appname {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 80px;
+  color: white;
+  margin: auto;
+  margin-top: 15%;
+  width: 250px;
+  text-align: center;
+}
+
+.tagline {
+  width: 300px;
+  margin: auto;
+  margin-top: 10px;
+  color: white;
+  text-align: center;
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
+  font-weight: 100;
+}
+
+.projectdependencyinfo {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  width: 75%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.projectdependencyinfo .location {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.projectdependencyinfo .location a:link,
+.projectdependencyinfo .location a:visited,
+.projectdependencyinfo .location a:hover,
+.projectdependencyinfo .location a:active {
+  color: white;
+}
+
+.dependencylist {
+  margin-top: 10px;
+  float: left;
+  width: 50%;
+}
+
+.dependencylist .name {
+  margin: auto;
+  width: 100%;
+  text-transform: lowercase;
+  text-align: center;
+}
+
+.dependencylist .items {
+  height: 500px;
+  overflow: scroll;
+  overflow-y: scroll;
+}
+
+.dependencylist .items .item {
+  list-style: none;
 }

@@ -11,21 +11,23 @@ const Search = ({
   onSuggestionSelected,
   onChange
 }) => (
-  <Autosuggest
-    suggestions={suggestions}
-    onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-    onSuggestionsClearRequested={onSuggestionsClearRequested}
-    getSuggestionValue={suggestion => {
-      return suggestion;
-    }}
-    renderSuggestion={SearchSuggestion}
-    inputProps={{
-      placeholder: 'Type project name',
-      value,
-      onChange
-    }}
-    onSuggestionSelected={onSuggestionSelected}
-  />
+  <div className="search">
+    <Autosuggest
+      suggestions={suggestions}
+      onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+      onSuggestionsClearRequested={onSuggestionsClearRequested}
+      getSuggestionValue={suggestion => {
+        return suggestion;
+      }}
+      renderSuggestion={SearchSuggestion}
+      inputProps={{
+        placeholder: 'Type a project name',
+        value,
+        onChange
+      }}
+      onSuggestionSelected={onSuggestionSelected}
+    />
+  </div>
 );
 
 Search.propTypes = {

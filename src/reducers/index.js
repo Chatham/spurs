@@ -16,7 +16,14 @@ function reducer(state = {
   projectNames: [],
   projectIndex: {},
   projectDependencyInfoList: {},
-  selectedProject: {}
+  selectedProject: {
+    projectName: "",
+    dependencyInfo: {
+      dependencyOf: [],
+      dependencies: [],
+      location: ""
+    }
+  }
 }, action) {
   switch (action.type) {
     case SEARCH_VALUE_CHANGE:

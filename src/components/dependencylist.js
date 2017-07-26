@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const DependencyList = ({name, dependencies, onDependencyClick}) => (
-  <div>
-    <p>{name}</p>
-    <ul>
+  <div className="dependencylist">
+    <p className="name">{name} ({dependencies.length})</p>
+    <ul className="items">
       {dependencies.map(dependency => (
-        <li key={dependency}>{dependency}</li>
+        <li className="item" key={dependency}>{dependency}</li>
       ))}
     </ul>
   </div>

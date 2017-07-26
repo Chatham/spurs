@@ -65,7 +65,6 @@ export function setProjectNamesFromIndex(projectIndex) {
 
 function _fetchProjectNames() {
   return (dispatch) => {
-    console.log("fetching names");
     return fetch('dependency_info/index.json')
       .then(res => {
         return res.json();
@@ -119,9 +118,7 @@ function receiveProjectDependencyInfo(projectName, dependencyInfo) {
 
 function _fetchProjectDependencyInfo(projectName) {
   return (dispatch, getState) => {
-    const {
-      projectDependencyInfoLocation
-    } = getState().projectIndex[projectName];
+    const projectDependencyInfoLocation = getState().projectIndex[projectName];
 
     return fetch(`dependency_info/${projectDependencyInfoLocation}`)
       .then(res => {
