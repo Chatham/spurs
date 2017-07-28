@@ -9,6 +9,7 @@ var express = require('express')
 
 const HOST = process.env.HOST || "127.0.0.1";
 const PORT = process.env.PORT || "8888";
+const BACKEND_LOCATION = process.env.BACKEND_LOCATION || "";
 
 loaders.push({
   test: /\.scss$/,
@@ -65,5 +66,8 @@ module.exports = {
         js: [ "bundle.js"],
       }
     }),
+    new webpack.DefinePlugin({
+      CONFIG_BACKEND_LOCATION: JSON.stringify(BACKEND_LOCATION)
+    })
   ]
 };

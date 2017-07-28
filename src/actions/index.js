@@ -1,3 +1,5 @@
+const BACKEND_LOCATION = CONFIG_BACKEND_LOCATION;
+
 export const SEARCH_VALUE_CHANGE = 'SEARCH_VALUE_CHANGE';
 export function searchValueChange(newValue) {
   return {
@@ -74,7 +76,7 @@ export function setProjectNamesFromIndex(projectIndex) {
 
 function _fetchProjectNames() {
   return (dispatch) => {
-    return fetch('dependency_info/index.json')
+    return fetch(`${BACKEND_LOCATION}dependency_info/index.json`)
       .then(res => {
         return res.json();
       }, eRes => {
@@ -129,7 +131,7 @@ function _fetchProjectDependencyInfo(projectName) {
   return (dispatch, getState) => {
     const projectDependencyInfoLocation = getState().spurs.projectIndex[projectName];
 
-    return fetch(`dependency_info/${projectDependencyInfoLocation}`)
+    return fetch(`${BACKEND_LOCATION}dependency_info/${projectDependencyInfoLocation}`)
       .then(res => {
         return res.json();
       }, eRes => {

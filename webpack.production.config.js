@@ -5,6 +5,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const BACKEND_LOCATION = process.env.BACKEND_LOCATION || "";
+
 loaders.push({
   test: /\.scss$/,
   loader: ExtractTextPlugin.extract({fallback: 'style-loader', use : 'css-loader?sourceMap&localIdentName=[local]___[hash:base64:5]!sass-loader?outputStyle=expanded'}),
@@ -17,7 +19,7 @@ module.exports = {
     './styles/index.scss'
   ],
   output: {
-    publicPath: './',		
+    publicPath: './',
     path: path.join(__dirname, 'public'),
     filename: '[chunkhash].js'
   },
@@ -32,7 +34,8 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
-      }
+      },
+      CONFIG_BACKEND_LOCATION: JSON.stringify(BACKEND_LOCATION)
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
