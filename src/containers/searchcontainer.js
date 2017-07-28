@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(clearSuggestions());
     },
     onSuggestionSelected: (event, {suggestionValue}) => {
-      dispatch(push(`/?projectName=${suggestionValue}`));
+      dispatch(push(`?projectName=${suggestionValue}`));
     },
     onChange: (event, {newValue}) => {
       dispatch(searchValueChange(newValue));
