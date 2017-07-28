@@ -12,6 +12,7 @@ import {
 
 function spurs(state = {
   searchValue: "",
+  previousSearchValue: "",
   searchSuggestions: [],
   projectNames: [],
   projectIndex: {},
@@ -28,7 +29,8 @@ function spurs(state = {
   switch (action.type) {
     case SEARCH_VALUE_CHANGE:
       const { value } = action.payload;
-      return { ...state, searchValue: value };
+      const pValue = state.previousSearchValue;
+      return { ...state, searchValue: value, previousSearchValue: pValue };
     case CLEAR_SUGGESTIONS:
       return { ...state, searchSuggestions: [] };
     case RECEIVE_SUGGESTIONS:

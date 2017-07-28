@@ -26,19 +26,28 @@ function receiveSuggestions(suggestions) {
   };
 }
 
-function buildSuggestions(searchValue) {
+function _filterArrayBasedOnValue(value, arrayToFilter) {
+  return value.length === 0 ? [] : arrayToFilter.filter(item => {
+    let regex = new RegExp(value, "i");
+    return regex.test(item);
+  });
+}
+
+function buildSuggestions(value) {
   return (dispatch, getState) => {
     const {
-      projectNames
+      projectNames,
+      previousSearchValue,
+      searchSuggestions
     } = getState().spurs;
-    const inputValue = searchValue.trim().toLowerCase();
+    const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
 
-    const suggestions = inputLength === 0 ? [] : projectNames.filter(name =>
-      name.toLowerCase().includes(inputValue)
-    );
+    if (previousSearchValue.length > inputLength && previousSearchValue.toLowerCase().substring(0, inputLength-1) === inputValue) {
+      return dispatch(receiveSuggestions(_filterArrayBasedOnValue(inputValue, searchSuggestions)));
+    }
 
-    return dispatch(receiveSuggestions(suggestions));
+    return dispatch(receiveSuggestions(_filterArrayBasedOnValue(inputValue, projectNames)));
   }
 }
 
