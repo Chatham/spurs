@@ -5,7 +5,9 @@ import Search from '../components/search.js';
 import { push } from 'react-router-redux';
 
 const mapStateToProps = state => {
-  return {value: state.spurs.searchValue, suggestions: state.spurs.searchSuggestions}
+  const suggestionsEnd = state.spurs.searchSuggestions.length;
+  const sliceEnd = suggestionsEnd > 20 ? 20 : suggestionsEnd;
+  return {value: state.spurs.searchValue, suggestions: state.spurs.searchSuggestions.slice(0, sliceEnd)}
 };
 
 const mapDispatchToProps = dispatch => {
