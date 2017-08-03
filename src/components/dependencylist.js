@@ -7,7 +7,7 @@ const DependencyList = ({name, dependencies, onDependencyClick}) => (
     <p className="name">{name} ({dependencies.length})</p>
     <ul className="items">
       {dependencies.map(dependency => (
-        <li className="item" key={dependency}><Link to={`/?projectName=${dependency}`}>{dependency}</Link></li>
+        <li className="item" key={dependency}><Link to={`?projectName=${dependency}`}>{dependency}</Link></li>
       ))}
     </ul>
   </div>
