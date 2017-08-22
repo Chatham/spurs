@@ -28,10 +28,10 @@ ProjectDependencyInfo.propTypes = {
   name: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   dependencyOf: PropTypes
-    .arrayOf(PropTypes.string)
+    .object
     .isRequired,
   dependencies: PropTypes
-    .arrayOf(PropTypes.string)
+    .object
     .isRequired,
   gotoProject: PropTypes.func.isRequired
 };

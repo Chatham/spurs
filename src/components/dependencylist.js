@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const DependencyList = ({name, dependencies, onDependencyClick}) => (
   <div className="dependencylist">
-    <p className="name">{name} ({dependencies.length})</p>
+    <p className="name">{name} ({Object.keys(dependencies).length})</p>
     <ul className="items">
-      {dependencies.map(dependency => (
-        <li className="item" key={dependency}><Link to={`?projectName=${dependency}`}>{dependency}</Link></li>
+      {Object.keys(dependencies).map(dep => (
+        <li className="item" key={dep}><Link to={`?projectName=${dep}`}>{dependencies[dep].transient === true && <span title="transient dependency">&#9768;&nbsp;</span> }{dep}</Link></li>
       ))}
     </ul>
   </div>
@@ -16,7 +16,7 @@ const DependencyList = ({name, dependencies, onDependencyClick}) => (
 DependencyList.propTypes = {
   name: PropTypes.string.isRequired,
   dependencies: PropTypes
-    .arrayOf(PropTypes.string)
+    .object
     .isRequired,
   onDependencyClick: PropTypes.func.isRequired
 };

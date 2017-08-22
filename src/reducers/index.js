@@ -20,8 +20,8 @@ function spurs(state = {
   selectedProject: {
     projectName: "",
     dependencyInfo: {
-      dependencyOf: [],
-      dependencies: [],
+      dependencyOf: {},
+      dependencies: {},
       location: ""
     }
   }
