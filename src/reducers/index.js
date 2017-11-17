@@ -22,7 +22,8 @@ function spurs(state = {
     dependencyInfo: {
       dependencyOf: {},
       dependencies: {},
-      location: ""
+      location: "",
+      languageReq: ""
     }
   }
 }, action) {

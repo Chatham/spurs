@@ -42,10 +42,12 @@ body {
   margin-top: 20px;
 }
 
-.projectdependencyinfo .location {
+.projectdependencyinfo .location,
+.projectdependencyinfo .languagereq {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: center;
 }
 
 .projectdependencyinfo .location a:link,

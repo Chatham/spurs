@@ -5,6 +5,7 @@ const mapStateToProps = state => {
   return {
     name: state.spurs.selectedProject.projectName,
     location: state.spurs.selectedProject.dependencyInfo.location,
+    languageReq: state.spurs.selectedProject.dependencyInfo.languageReq,
     dependencyOf: state.spurs.selectedProject.dependencyInfo.dependencyOf,
     dependencies: state.spurs.selectedProject.dependencyInfo.dependencies,
   }
