@@ -9,7 +9,7 @@
     "lint": "eslint --ext js --ext jsx src || exit 0",
     "dev": " webpack-dashboard -- webpack-dev-server --progress --profile --colors"
   },
-  "author": "Jon Carl",
+  "author": "Chatham Financial Corp.",
   "dependencies": {
     "history": "^4.6.3",
     "node-sass": "^4.3.0",
